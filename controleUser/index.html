@@ -139,7 +139,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
-              <table class="table table-striped">
+              <table class="table table-striped" >
                 <thead>
                   <tr>
                     <th style="width: 10px">Foto</th>
@@ -149,49 +149,9 @@
                     <th>Criado em</th>
                     <th>Ações</th>
                   </tr>
-                </thead>
-                <tbody>
+                </thead >
+                <tbody id="user-table">
 
-                  <tr>
-                    <td><img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm"></td>
-                    <td>Fulano</td>
-                    <td>fulano@hcode.com.br</td>
-                    <td>Sim</td>
-                    <td>02/04/2018</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
-                      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm">
-                    </td>
-                    <td>Fulano</td>
-                    <td>fulano@hcode.com.br</td>
-                    <td>Sim</td>
-                    <td>02/04/2018</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
-                      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm">
-                    </td>
-                    <td>Fulano</td>
-                    <td>fulano@hcode.com.br</td>
-                    <td>Sim</td>
-                    <td>02/04/2018</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
-                      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
-                    </td>
-                  </tr>
-                  
                 </tbody>
               </table>
             </div>
@@ -208,9 +168,9 @@
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3 id="number-user">0</h3>
           
-                  <p>Novos Usuários</p>
+                  <p>Usuários</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -222,7 +182,7 @@
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>15</h3>
+                  <h3 id="number-admin" >0</h3>
           
                   <p>Administradores</p>
                 </div>
@@ -250,12 +210,12 @@
                   <label>Gênero</label>
                   <div class="radio">
                     <label for="exampleInputGenderM">
-                      <input type="radio" id="exampleInputGenderM" name="gender">
+                      <input type="radio" id="exampleInputGenderM" checked name="gender" value="M" >
                       Masculino</label>
                   </div>
                   <div class="radio">
                     <label for="exampleInputGenderF">
-                      <input type="radio" id="exampleInputGenderF" name="gender">
+                      <input type="radio" id="exampleInputGenderF" name="gender" value="F" >
                       Feminino</label>
                   </div>
                 </div>
@@ -554,6 +514,10 @@
   </footer>
 
 </div>
+
+<script src="js/utils/utils.js"></script>
+<script src="js/models/user.js"></script>
+<script src="js/controllers/userController.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
