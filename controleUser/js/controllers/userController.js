@@ -5,8 +5,29 @@ class UserController {
         this.tableEl = document.getElementById(tableId)
 
         this.onSubmite()
+        this.onEditCancel()
     }
 
+
+    onEditCancel(){
+        
+        document.querySelector('#form-user-update #btn-cancel').addEventListener('click', e=>{
+
+            this.showPanelCreate()
+        })
+        
+
+    }
+
+    showPanelCreate(){
+        document.querySelector('#container-form-user-create').style.display = 'block'
+        document.querySelector('#container-form-user-update').style.display = 'none'
+    }
+
+    showPanelUpdate(){
+        document.querySelector('#container-form-user-create').style.display = 'none'
+        document.querySelector('#container-form-user-update').style.display = 'block'
+    }
 
     onSubmite(){
         let btnSalvar = this.formEl.querySelector("[type=submite]")
@@ -123,6 +144,8 @@ class UserController {
 
         let tr = document.createElement("tr")
 
+        tr.dataset.user = JSON.stringify(dataUser)
+
         tr.innerHTML = `   
                 <td><img src=${dataUser.photo} alt="User Image" class="img-circle img-sm"></td>
                 <td>${dataUser.name}</td>
@@ -130,10 +153,32 @@ class UserController {
                 <td>${(dataUser.admin)?"SIM":"NÃO"}</td>
                 <td>${Utils.formatDate(dataUser.register)}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
+                    <button type="button" class="btn btn-primary btn-edit btn-xs btn-flat">Editar</button>
                     <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
                 </td>
         `
+        tr.querySelector('.btn-edit').addEventListener('click', e=>{
+            let json = JSON.parse(tr.dataset.user)
+            let form =  document.getElementById('form-user-update')
+
+            for (let name in json){
+                
+                let field = form.querySelector(`[name=${name.replace("_","")}]`)
+                     
+                if(field){
+                    
+                    if(field.name == 'photo'){
+                        continue
+                    }
+                    
+                    field.value = json[name]
+                }
+
+            }
+
+            this.showPanelUpdate()
+        })
+
         this.tableEl.appendChild(tr)
 
         this.updateCount()
@@ -141,7 +186,25 @@ class UserController {
 
     updateCount(){
 
-        
+        let numberUser = 0
+        let numberAdmin = 0
+
+        let tableArrayChildren = [...this.tableEl.children]
+
+        tableArrayChildren.forEach(tr=>{
+            numberUser++
+
+            let user = JSON.parse(tr.dataset.user)
+
+            if(user._admin){
+                numberAdmin++
+            }
+
+
+            document.getElementById('number-user').innerHTML = numberUser
+            document.getElementById('number-admin').innerHTML = numberAdmin
+
+        })
 
     }
 }
