@@ -167,8 +167,18 @@ class UserController {
                      
                 if(field){
                     
-                    if(field.name == 'photo'){
-                        continue
+                    switch(field.name){
+                        case 'photo':
+                            continue
+                            break
+                        
+                        case 'radio':
+                            field = form.querySelector(`[name=${name.replace("_","")}][value=${jason[name]}]`)
+                            field.checked = true
+                            break
+                        case 'chekbox':
+                            field.checked = js
+                            break
                     }
                     
                     field.value = json[name]
