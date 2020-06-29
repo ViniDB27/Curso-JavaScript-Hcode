@@ -9,4 +9,4 @@ var file = document.querySelector('#exampleInputFile')
 var adm = document.querySelector('#admin')
 */
 
-let userController = new UserController("form-user-create","user-table")
+let userController = new UserController("form-user-create", "form-user-update","user-table")
